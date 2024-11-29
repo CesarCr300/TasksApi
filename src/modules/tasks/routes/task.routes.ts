@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { TaskRepository } from "../repositories/task.repository";
-import { DataSourceSingletone } from "../../../database/datasource";
+import { DataSourceSingletone } from "../../../persistence/datasource";
 import { TaskService } from "../services/task.service";
 import { TaskController } from "../controllers/task.controller";
 import { asyncWrapper } from "../../../middlewares/asyncWrapper.middleware";
