@@ -4,6 +4,7 @@
   "main": "src/app.ts",
   "license": "]",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
@@ -11,6 +12,7 @@
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1",
     "ts-node": "^10.9.2",
