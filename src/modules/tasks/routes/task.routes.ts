@@ -5,9 +5,11 @@ import { DataSourceSingletone } from "../../../persistence/datasource";
 import { TaskService } from "../services/task.service";
 import { TaskController } from "../controllers/task.controller";
 import { asyncWrapper } from "../../../middlewares/asyncWrapper.middleware";
+import { TaskRepositoryProxy } from "../repositories/task.repository.proxy";
 
 const repository = new TaskRepository(DataSourceSingletone.get());
-const service = new TaskService(repository);
+const repositoryProxy = new TaskRepositoryProxy(repository);
+const service = new TaskService(repositoryProxy);
 const controller = new TaskController(service);
 
 export const router = Router();
