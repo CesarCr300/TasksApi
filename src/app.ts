@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import helmet from "helmet";
 import { DataSourceSingletone } from "./persistence/datasource";
 import { errorHandler } from "./middlewares/error.middleware";
 dotenv.config();
@@ -8,10 +9,26 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Configurar CORS para permitir solicitudes desde el puerto 3000
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
+  })
+);
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
+        imgSrc: ["'self'", "data:"],
+        connectSrc: ["'self'"],
+        fontSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
   })
 );
 
@@ -32,6 +49,7 @@ app.listen(PORT, async () => {
     console.log("Server is not running");
   }
 });
+
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const statusCode = 500;
   res.status(statusCode).send({
