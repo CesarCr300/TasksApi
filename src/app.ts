@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { DataSourceSingletone } from "./database/datasource";
+import { DataSourceSingletone } from "./persistence/datasource";
 import { errorHandler } from "./middlewares/error.middleware";
 dotenv.config();
 
