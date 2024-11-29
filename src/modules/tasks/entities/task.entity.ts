@@ -6,6 +6,12 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
+export enum TaskStatus {
+  Pending = "Pending",
+  InProgress = "In Progress",
+  Completed = "Completed",
+}
+
 @Entity("tbl_tasks")
 export class Task {
   @PrimaryGeneratedColumn({ name: "int_id" })
@@ -20,10 +26,10 @@ export class Task {
   @Column({
     name: "vch_status",
     type: "enum",
-    enum: ["Pending", "In Progress", "Completed"],
-    default: "Pending",
+    enum: TaskStatus,
+    default: TaskStatus.Pending,
   })
-  status: "pending" | "in-progress" | "completed";
+  status: TaskStatus;
 
   @CreateDateColumn({
     name: "dtt_creation_date",
@@ -42,6 +48,6 @@ export class Task {
   constructor(title: string, description: string) {
     this.title = title;
     this.description = description;
-    this.status = "pending";
+    this.status = TaskStatus.Pending;
   }
 }

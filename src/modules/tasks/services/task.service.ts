@@ -13,7 +13,7 @@ export class TaskService {
   }
 
   async update(id: number, dto: TaskUpdateDto) {
-    return await this._repository.update(id, dto.title, dto.description);
+    return await this._repository.update(id, dto.title, dto.description, dto.status);
   }
   async getAll() {
     return await this._repository.getAll();

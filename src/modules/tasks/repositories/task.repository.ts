@@ -1,5 +1,5 @@
 import { DataSource, Repository } from "typeorm";
-import { Task } from "../entities/task.entity";
+import { Task, TaskStatus } from "../entities/task.entity";
 
 export class TaskRepository {
   private _repository: Repository<Task>;
@@ -19,10 +19,15 @@ export class TaskRepository {
     return await this._repository.find();
   }
 
-  async update(id: number, title: string, description: string) {
+  async update(
+    id: number,
+    title: string,
+    description: string,
+    status: TaskStatus
+  ) {
     const updateResult = await this._repository.update(
       { id: id },
-      { title, description }
+      { title, description, status }
     );
 
     return updateResult.affected > 0;
