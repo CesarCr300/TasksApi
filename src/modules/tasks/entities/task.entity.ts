@@ -23,7 +23,7 @@ export class Task {
     enum: ["Pending", "In Progress", "Completed"],
     default: "Pending",
   })
-  status: "Pending" | "In Progress" | "Completed";
+  status: "pending" | "in-progress" | "completed";
 
   @CreateDateColumn({
     name: "dtt_creation_date",
@@ -42,6 +42,6 @@ export class Task {
   constructor(title: string, description: string) {
     this.title = title;
     this.description = description;
-    this.status = "Pending";
+    this.status = "pending";
   }
 }

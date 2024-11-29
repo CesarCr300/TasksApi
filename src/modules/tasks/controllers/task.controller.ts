@@ -10,13 +10,13 @@ export class TaskController {
   }
   async getAll(req: Request, res: Response) {
     const tasks = await this._service.getAll();
-    res.json({ tasks });
+    res.json({ data: tasks });
   }
 
   async create(req: Request, res: Response) {
     const taskDto = req.body as TaskCreateDto;
-    await this._service.create(taskDto);
-    res.json({ message: "Tarea creada correctamente" });
+    const createdTask = await this._service.create(taskDto);
+    res.json({ message: "Tarea creada correctamente", data: createdTask });
   }
 
   async update(req: Request, res: Response) {

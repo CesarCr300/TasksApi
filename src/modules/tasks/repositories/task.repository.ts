@@ -12,6 +12,7 @@ export class TaskRepository {
       ...new Task(title, description),
     });
     await this._repository.save(entity);
+    return entity;
   }
 
   async getAll() {
