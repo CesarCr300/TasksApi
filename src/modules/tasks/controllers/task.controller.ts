@@ -23,7 +23,7 @@ export class TaskController {
     try {
       const taskDto = req.body as TaskCreateDto;
       const createdTask = await this._service.create(taskDto);
-      res.json({ message: "Tarea creada correctamente", data: createdTask });
+      res.status(201).json({ message: "Tarea creada correctamente", data: createdTask });
     } catch (error) {
       next(error);
     }

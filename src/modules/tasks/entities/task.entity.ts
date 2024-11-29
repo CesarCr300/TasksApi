@@ -7,9 +7,9 @@ import {
 } from "typeorm";
 
 export enum TaskStatus {
-  Pending = "Pending",
-  InProgress = "In Progress",
-  Completed = "Completed",
+  Pending = "pending",
+  InProgress = "in-progress",
+  Completed = "completed",
 }
 
 @Entity("tbl_tasks")
